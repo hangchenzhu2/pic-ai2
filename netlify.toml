@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# 注意：REPLICATE_API_TOKEN 需要在 Netlify 控制台的 Environment variables 中设置
+# 不要在这个文件中写入实际的 API token，特别是如果这是一个公开仓库
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true" 
